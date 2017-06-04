@@ -10,4 +10,5 @@
     - { role: common }
     - { role: zsh }
     - { role: dotfiles }
+    - { role: settings-config }
 
