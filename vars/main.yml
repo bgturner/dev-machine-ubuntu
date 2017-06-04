@@ -12,3 +12,11 @@ dotfiles_files:
   - .zshrc
   - .bash_aliases
 
+composer_home_path: '~/.config/composer'
+composer_home_owner: "{{ user }}"
+composer_home_group: "{{ user }}"
+composer_global_packages: 
+  - { name: phpunit/phpunit }
+  - { name: phpspec/phpspec }
+  - { name: squizlabs/php_codesniffer }
+
