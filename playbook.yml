@@ -10,5 +10,6 @@
     - { role: common }
     - { role: zsh }
     - { role: dotfiles }
+    - { role: php }
     - { role: settings-config }
 
