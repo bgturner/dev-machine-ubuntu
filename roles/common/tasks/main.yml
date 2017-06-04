@@ -1,0 +1,26 @@
+---
+- name: Install common core packages
+  apt: name={{ item }} state=present
+  with_items:
+    - git
+    - tmux
+    - vim
+    - silversearcher-ag
+
+- name: Install Graphic Design Packages
+  apt: name={{ item }} state=present
+  with_items:
+    - shutter
+    - inkscape
+    - gpick
+    - gimp
+    - gimp-lensfun
+    - gimp-save-for-web
+    - gimp-plugin-registry
+
+- name: Install Productivity Packages
+  apt: name={{ item }} state=present
+  with_items:
+    - chromium-browser
+    - thunderbird
+
