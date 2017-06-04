@@ -1,2 +1,12 @@
 user: benjamin
 
+dotfiles_repo: https://github.com/bgturner/dot-files.git
+dotfiles_repo_local_destination: ~/.dot-files
+dotfiles_files:
+  - .gitconfig
+  - .gitignore
+  - .tmux.conf
+  - .vimrc
+  - .zshrc
+  - .bash_aliases
+

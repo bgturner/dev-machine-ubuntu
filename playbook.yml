@@ -9,4 +9,5 @@
   roles:
     - { role: common }
     - { role: zsh }
+    - { role: dotfiles }
 
