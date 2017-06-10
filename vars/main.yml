@@ -10,7 +10,10 @@ dotfiles_files:
   - .tmux.conf
   - .vimrc
   - .zshrc
+  - .bashrc
+  - .bash_prompt
   - .bash_aliases
+  - .inputrc
 
 composer_home_path: '~/.config/composer'
 composer_home_owner: "{{ user }}"
