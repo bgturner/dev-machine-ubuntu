@@ -8,6 +8,7 @@
 
   roles:
     - { role: common }
+    - { role: vagrant }
     - { role: zsh }
     - { role: dotfiles }
     - { role: php }

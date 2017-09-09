@@ -23,3 +23,6 @@ composer_global_packages:
   - { name: phpspec/phpspec }
   - { name: squizlabs/php_codesniffer }
 
+vagrant_version: vagrant_1.9.8_x86_64
+vagrant_package_url: https://releases.hashicorp.com/vagrant/1.9.8/vagrant_1.9.8_x86_64.deb
+

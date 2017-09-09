@@ -1,0 +1,16 @@
+- name: Check if Vagrant is installed
+  command: dpkg-query -W vagrant
+  register: vagrant_check_deb
+  failed_when: vagrant_check_deb.rc > 1
+  changed_when: vagrant_check_deb.rc == 1
+
+- name: Downloading Vagrant
+  get_url:
+    url="{{ vagrant_package_url }}"
+    dest="/home/{{ user }}/Downloads/{{ vagrant_version }}.deb"
+  when: vagrant_check_deb.rc == 1
+
+- name: Install Vagrant
+  apt: deb="/home/{{ user }}/Downloads/{{ vagrant_version }}.deb"
+  when: vagrant_check_deb.rc == 1
+
