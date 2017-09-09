@@ -7,6 +7,11 @@
     - vim
     - silversearcher-ag
 
+- name: Install Web Development Packages
+  apt: name={{ item }} state=present
+  with_items:
+    - virtualbox
+
 - name: Install Graphic Design Packages
   apt: name={{ item }} state=present
   with_items:
