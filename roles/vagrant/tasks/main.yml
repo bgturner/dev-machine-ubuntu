@@ -1,3 +1,9 @@
+- name: Install Vagrant Dependencies for Ubuntu 16.04
+  apt: name={{ item }} state=present
+  with_items:
+    - nfs-common
+    - nfs-kernel-server
+
 - name: Check if Vagrant is installed
   command: dpkg-query -W vagrant
   register: vagrant_check_deb
