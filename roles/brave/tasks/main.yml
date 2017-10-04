@@ -1,0 +1,16 @@
+---
+- name: Add Brave Key
+  apt_key:
+    url: https://s3-us-west-2.amazonaws.com/brave-apt/keys.asc
+    state: present
+
+- name: Add Brave Repository
+  apt_repository:
+    repo: "deb [arch=amd64] https://s3-us-west-2.amazonaws.com/brave-apt {{ ansible_lsb.codename|lower }} main"
+
+- name: Install latest version of Brave
+  apt:
+    name: brave
+    state: latest
+    update_cache: yes
+
