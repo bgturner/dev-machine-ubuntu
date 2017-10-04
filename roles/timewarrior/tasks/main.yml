@@ -1,0 +1,34 @@
+---
+- name: Timewarrior - Ensure build deps are satisfied
+  apt: name={{ item }} state=present
+  with_items:
+    - make
+    - cmake
+    - build-essential
+    - git
+
+- name: Timewarrior - Download Repo
+  get_url:
+    url: "https://taskwarrior.org/download/{{ timewarrior.package_name }}.tar.gz"
+    dest: "{{ timewarrior.src_dir }}/{{ timewarrior.package_name }}.tar.gz"
+  register: timewarrior_downloaded
+
+- name: Timewarrior - Extract Repo
+  unarchive:
+    src: "{{ timewarrior.src_dir }}/{{ timewarrior.package_name }}.tar.gz"
+    dest: "{{ timewarrior.src_dir }}/"
+  when: timewarrior_downloaded.changed
+  register: timewarrior_extracted
+
+- name: Timewarrior - Build
+  command: "{{ item }} chdir='{{ timewarrior.src_dir }}/{{ timewarrior.package_name }}'"
+  with_items:
+    - cmake -DCMAKE_BUILD_TYPE=release .
+    - make
+  when: timewarrior_extracted.changed
+  register: timewarrior_built
+
+- name: Timewarrior - Install
+  command: "make install chdir='{{ timewarrior.src_dir }}/{{ timewarrior.package_name }}'"
+  when: timewarrior_built.changed
+

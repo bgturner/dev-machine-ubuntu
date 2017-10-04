@@ -1,0 +1,36 @@
+---
+- name: Taskwarrior - Ensure build deps are satisfied
+  apt: name={{ item }} state=present
+  with_items:
+    - make
+    - cmake
+    - build-essential
+    - git
+    - libgnutls-dev
+    - uuid-dev
+
+- name: Taskwarrior - Download Repo
+  get_url:
+    url: "https://taskwarrior.org/download/{{ taskwarrior.package_name }}.tar.gz    "
+    dest: "{{ taskwarrior.src_dir }}/{{ taskwarrior.package_name }}.tar.gz"
+  register: taskwarrior_downloaded
+
+- name: Taskwarrior - Extract Repo
+  unarchive:
+    src: "{{ taskwarrior.src_dir }}/{{ taskwarrior.package_name }}.tar.gz"
+    dest: "{{ taskwarrior.src_dir }}/"
+  when: taskwarrior_downloaded.changed
+  register: taskwarrior_extracted
+
+- name: Taskwarrior - Build
+  command: "{{ item }} chdir='{{ taskwarrior.src_dir }}/{{ taskwarrior.package_name }}'"
+  with_items:
+    - cmake -DCMAKE_BUILD_TYPE=release .
+    - make
+  when: taskwarrior_extracted.changed
+  register: taskwarrior_built
+
+- name: Taskwarrior - Install
+  command: "make install chdir='{{ taskwarrior.src_dir }}/{{ taskwarrior.package_name }}'"
+  when: taskwarrior_built.changed
+
