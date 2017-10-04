@@ -14,4 +14,5 @@
     - { role: php }
     - { role: composer }
     - { role: settings-config }
+    - { role: vim }
 
