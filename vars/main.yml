@@ -26,3 +26,16 @@ composer_global_packages:
 vagrant_version: vagrant_1.9.8_x86_64
 vagrant_package_url: https://releases.hashicorp.com/vagrant/1.9.8/vagrant_1.9.8_x86_64.deb
 
+nvm_user: "{{ user }}"
+nvm_version: "v0.33.4"
+nvm_node_version: "6.11.4"
+nvm_npm_pkgs:
+  - pkg: yarn
+    version: "*"
+  - pkg: grunt-cli
+    version: "*"
+  - pkg: gulp-cli
+    version: "*"
+  - pkg: browser-sync
+    version: "*"
+

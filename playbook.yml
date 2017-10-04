@@ -12,6 +12,7 @@
     - { role: zsh }
     - { role: dotfiles }
     - { role: php }
+    - { role: nvm }
     - { role: composer }
     - { role: settings-config }
 
