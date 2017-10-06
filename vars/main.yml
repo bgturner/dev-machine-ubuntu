@@ -38,4 +38,6 @@ nvm_npm_pkgs:
     version: "*"
   - pkg: browser-sync
     version: "*"
+  - pkg: gitbook-cli
+    version: "*"
 
