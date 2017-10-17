@@ -1,0 +1,22 @@
+---
+- name: Add Key for Docker Repository
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Add Docker Repository
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_lsb.codename|lower }} stable"
+
+- name: Install latest version of Docker CE
+  apt:
+    name: docker-ce
+    state: latest
+    update_cache: yes
+
+- name: Install Docker-Compose
+  get_url:
+    url="https://github.com/docker/compose/releases/download/{{ docker_compose.version }}/docker-compose-Linux-x86_64"
+    dest="/usr/local/bin/docker-compose"
+    mode=0755
+

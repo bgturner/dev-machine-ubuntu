@@ -42,3 +42,6 @@ nvm_npm_pkgs:
   - pkg: gitbook-cli
     version: "*"
 
+docker_compose:
+  version: 1.16.1
+
