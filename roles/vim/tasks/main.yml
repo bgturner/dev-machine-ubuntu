@@ -1,11 +1,13 @@
 ---
 - name: Add PPA jonathonf/vim
+  become: yes
   apt_repository:
     repo: ppa:jonathonf/vim
     update_cache: yes
 
 
 - name: Install Vim 8
+  become: yes
   apt: name={{ item }} state=present
   with_items:
     - vim-nox
